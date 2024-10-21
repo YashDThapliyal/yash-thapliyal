@@ -1,0 +1,642 @@
+<html><head><base href="https://portfolio.example.com/" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yash Thapliyal | Developer & AI Enthusiast</title>
+<style>
+  :root {
+    --primary-color: #000000;
+    --secondary-color: #f5f5f5;
+    --accent-color: #333333;
+    --text-color: #222222;
+    --hover-color: #555555;
+  }
+
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  header {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 0 15px;
+  }
+
+  nav ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  nav ul li a:hover {
+    color: var(--accent-color);
+  }
+
+  .hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000),
+                linear-gradient(45deg, #000000 25%, transparent 25%, transparent 75%, #000000 75%, #000000);
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    opacity: 0.05;
+  }
+
+  .hero-content h1 {
+    font-size: 6em;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-content p {
+    font-size: 1.5em;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 0.5s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .section {
+    padding: 80px 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .about-container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .about-image img {
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .about-content {
+    flex: 1;
+  }
+
+  .section h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    font-size: 3em;
+    font-weight: 700;
+  }
+
+  .section h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 20px auto 0;
+  }
+
+  .experience-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .experience-item {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .experience-item::before {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    left: -38px;
+    top: 25px;
+  }
+
+  .experience-item::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: calc(100% + 30px);
+    background-color: var(--accent-color);
+    left: -32px;
+    top: 25px;
+  }
+
+  .experience-item:last-child::after {
+    height: calc(100% - 25px);
+  }
+
+  .experience-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  }
+
+  .project-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .project-content {
+    padding: 1.5rem;
+  }
+
+  .project-content h3 {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-content p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .project-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .project-link:hover {
+    background-color: var(--hover-color);
+  }
+
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .skill {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-weight: 600;
+  }
+
+  .skill:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-color);
+  }
+
+  .contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: border-color 0.3s ease;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+  }
+
+  .contact-form button {
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+  }
+
+  .contact-form button:hover {
+    background-color: var(--primary-color);
+  }
+
+  footer {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .resume-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    color: var(--secondary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .resume-link:hover {
+    background-color: var(--primary-color);
+  }
+
+  .typewriter {
+    overflow: hidden;
+    border-right: .15em solid var(--secondary-color);
+    white-space: nowrap;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    animation: 
+      typing 3.5s steps(30, end),
+      blink-caret .75s step-end infinite;
+  }
+
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--secondary-color) }
+  }
+
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+
+  @keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }   
+  }
+</style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Yash Thapliyal</h1>
+        <p id="typewriter" class="typewriter"></p>
+        <a href="/resume.pdf" class="resume-link" target="_blank">View My Resume</a>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container about-container">
+        <div class="about-image">
+          <img src="headshot.jpg" alt="Yash Thapliyal headshot, professional portrait" width="300" height="300">
+        </div>
+        <div class="about-content">
+          <h2>About Me</h2>
+          <p>I am an undergraduate at UC Berkeley, majoring in Electrical Engineering and Computer Science (EECS). I am very interested in AI and am open to roles in AI and SWE.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="container">
+        <h2>Experience</h2>
+        <div class="experience-timeline">
+          <div class="experience-item fade-in">
+            <h3>Research Intern @ AIFS</h3>
+            <p>University Of California, Davis - AIFS | June 2023 – Present</p>
+            <ul>
+              <li>Benchmarking and fine-tuning new Large Language Models (LLMs) against classical ML models.</li>
+              <li>Using Python, PyTorch, and BioBert to enhance predictive models for drug success across preclinical to post-clinical trials in the pharmaceutical domain.</li>
+            </ul>
+          </div>
+          <div class="experience-item fade-in">
+            <h3>Project Lead</h3>
+            <p>smartQED | April 2023 - December 2023</p>
+            <ul>
+              <li>Led a team of interns in integrating an OpenAI GPT model into the company's main product, significantly enhancing its functionality and improving user engagement.</li>
+              <li>Utilized React JS, Flask, Python, LLMs, and various libraries and APIs for implementation.</li>
+            </ul>
+          </div>
+          <div class="experience-item fade-in">
+            <h3>AI/ML Software Engineer Intern</h3>
+            <p>smartQED | July 2022 – April 2023</p>
+            <ul>
+              <li>Leveraged a pre-trained transformer model to create a system that summarized Stack Overflow data.</li>
+              <li>Utilized Java, MySQL, and Python to implement a customer data analysis metrics dashboard.</li>
+              <li>Built a custom Named Entity Recognition (NER) model from scratch to accurately recognize specific terms in the data for more accurate classification and summarization.</li>
+              <li>Used Object-Oriented Programming (OOP) techniques to enhance code quality and maintainability.</li>
+            </ul>
+          </div>
+          <div class="experience-item fade-in">
+            <h3>Software Engineer + Data Analyst Intern</h3>
+            <p>University Of California, San Francisco | June 2022 – August 2022</p>
+            <ul>
+              <li>Developed a Python application to optimize the computation of yearly carbon emissions using commute survey data from 6,600+ staff and students at UCSF.</li>
+              <li>Leveraged Distance Matrix API, Pandas, and data visualization techniques to create an efficient algorithm and visualize results effectively.</li>
+            </ul>
+          </div>
+          <div class="experience-item fade-in">
+            <h3>AI Researcher</h3>
+            <p>San Jose State University | June 2023– August 2023</p>
+            <ul>
+              <li>Researched the intersection of steganography and machine learning, using TensorFlow to build a project that tested a neural network's data-hiding capacity while maintaining 90% accuracy, refining my research and technical skills.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+          <div class="project-card">
+            <div class="project-image">
+              <img src="gita-gpt.jpg" alt="GITA-GPT project visualization" width="300" height="225">
+            </div>
+            <div class="project-content">
+              <h3>GITA-GPT</h3>
+              <p>AI-based question-answering system leveraging RAG architecture and Meta's LLAMA LLM via the GROQ API for real-time inference on the teachings of the Bhagavad Gita. Integrated FAISS for efficient vector search.</p>
+              <a href="https://github.com/YashDThapliyal/GITA-GPT/blob/main/README.md" class="project-link" target="_blank">View Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>My Skills</h2>
+        <div class="skills">
+          <span class="skill floating fade-in">Python</span>
+          <span class="skill floating fade-in">PyTorch</span>
+          <span class="skill floating fade-in">TensorFlow</span>
+          <span class="skill floating fade-in">Machine Learning</span>
+          <span class="skill floating fade-in">Deep Learning</span>
+          <span class="skill floating fade-in">Natural Language Processing</span>
+          <span class="skill floating fade-in">React</span>
+          <span class="skill floating fade-in">Flask</span>
+          <span class="skill floating fade-in">Java</span>
+          <span class="skill floating fade-in">MySQL</span>
+          <span class="skill floating fade-in">Data Analysis</span>
+          <span class="skill floating fade-in">Project Management</span>
+          <span class="skill floating fade-in">Team Leadership</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2>Get In Touch</h2>
+        <p>Email: yash.thapliyal@berkeley.edu</p>
+        <form class="contact-form">
+          <input type="text" placeholder="Your Name" required>
+          <input type="email" placeholder="Your Email" required>
+          <textarea placeholder="Your Message" rows="5" required></textarea>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Yash Thapliyal. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    const revealSection = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          if (entry.target.id) {
+            navLinks.forEach(link => {
+              if (link.getAttribute('href') === `#${entry.target.id}`) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        }
+      });
+    };
+
+    const sectionObserver = new IntersectionObserver(revealSection, {
+      root: null,
+      threshold: 0.15,
+    });
+
+    sections.forEach(section => {
+      sectionObserver.observe(section);
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    const fadeElements = document.querySelectorAll('.fade-in');
+    const fadeIn = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const fadeObserver = new IntersectionObserver(fadeIn, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    fadeElements.forEach(element => {
+      fadeObserver.observe(element);
+    });
+
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! I will get back to you soon.');
+      this.reset();
+    });
+
+    const projectCards = document.querySelectorAll('.project-card');
+
+    const revealProjects = (entries, observer) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 100);
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const projectObserver = new IntersectionObserver(revealProjects, {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    projectCards.forEach(card => {
+      projectObserver.observe(card);
+    });
+
+    function typeWriter() {
+      const typewriterElement = document.getElementById('typewriter');
+      if (!typewriterElement) return;
+
+      let titles = ['Leader', 'Engineer', 'AI Enthusiast'];
+      let titleIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typeSpeed = 100;
+      const deleteSpeed = 50;
+      const pauseDuration = 1000;
+
+      function type() {
+        const currentTitle = titles[titleIndex];
+
+        if (isDeleting) {
+          typewriterElement.textContent = currentTitle.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          typewriterElement.textContent = currentTitle.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        if (!isDeleting && charIndex === currentTitle.length) {
+          isDeleting = true;
+          setTimeout(type, pauseDuration);
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          titleIndex = (titleIndex + 1) % titles.length;
+          setTimeout(type, typeSpeed);
+        } else {
+          setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
+        }
+      }
+
+      type();
+    }
+
+    window.onload = typeWriter;
+  </script>
+</body>
+</html>
