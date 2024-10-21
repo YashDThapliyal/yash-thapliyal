@@ -33,24 +33,25 @@
         min-height: 24px; /* Ensures consistent height during typing */
     }
     .section {
-        margin-bottom: 40px;
-        background-color: #2a2a2a;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 50px;
+        background: linear-gradient(145deg, #2a2a2a, #333);
+        padding: 35px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease;
     }
     .section:hover {
         transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     }
     .section-title {
-        font-size: 1.4em;
-        margin-bottom: 20px;
+        font-size: 1.6em;
+        margin-bottom: 25px;
         font-weight: 600;
         color: #f0f0f0;
-        border-bottom: 2px solid #444;
-        padding-bottom: 10px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 15px;
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
     }
     p {
         margin-bottom: 15px;
@@ -124,7 +125,7 @@
         border-top: 1px solid #333;
     }
     .glow {
-        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
     }
     .experience {
         margin-bottom: 30px;
@@ -164,6 +165,29 @@
         50% { opacity: 1; }
         100% { opacity: 0; }
     }
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: center;
+    }
+    .skill {
+        background: linear-gradient(145deg, #333, #444);
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 1em;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    .skill:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        background: linear-gradient(145deg, #444, #555);
+    }
+    ul {
+        padding-left: 20px;
+    }
 </style>
 </head>
 <body>
@@ -173,8 +197,7 @@
         
         <div class="section">
             <h3 class="section-title glow">ABOUT ME</h3>
-            <p>Welcome to my digital space. I'm a passionate <span class="highlight">technologist</span> and <span class="highlight">innovator</span>, driven by the challenge of solving complex problems and creating elegant solutions. With a background in software engineering and AI, I specialize in developing cutting-edge applications and leading high-performance teams. My goal is to leverage technology to make a positive impact on the world.</p>
-            <p>When I'm not coding or exploring new AI concepts, you can find me engaging in tech community events, mentoring aspiring developers, and staying up-to-date with the latest industry trends. I believe in continuous learning and am always excited to explore new technologies and methodologies.</p>
+            <p>I am Yash Thapliyal, an undergraduate student at UC Berkeley pursuing a degree in Electrical Engineering and Computer Science (EECS). With a strong interest in artificial intelligence and software engineering, I am eager to engage in projects that challenge me and enable me to apply my technical skills. I strive to leverage technology to create meaningful solutions that have a positive impact on society.</p>
         </div>
 
         <div class="social-links">
@@ -195,14 +218,45 @@
         <div class="section experience">
             <h3 class="section-title glow">EXPERIENCE</h3>
             <div class="experience-item">
-                <div class="experience-title">Senior Software Engineer</div>
-                <div class="experience-company">Innovative Tech Solutions Inc. | 2020 - Present</div>
-                <p>Leading development of cutting-edge AI-driven applications. Spearheaded a project that increased system efficiency by 40%. Mentoring junior developers and implementing best practices in code review and agile methodologies.</p>
+                <div class="experience-title">Research Intern</div>
+                <div class="experience-company">AIFS, University Of California, Davis | June 2023 – Present</div>
+                <ul>
+                    <li>Conducting benchmarking and fine-tuning of Large Language Models (LLMs) against traditional machine learning models.</li>
+                    <li>Utilizing Python, PyTorch, and BioBert to enhance predictive models for assessing drug success through various trial stages in the pharmaceutical sector.</li>
+                </ul>
             </div>
             <div class="experience-item">
-                <div class="experience-title">Machine Learning Engineer</div>
-                <div class="experience-company">Data Insights Co. | 2017 - 2020</div>
-                <p>Developed and deployed machine learning models for predictive analytics. Collaborated with cross-functional teams to integrate ML solutions, resulting in a 25% increase in customer retention.</p>
+                <div class="experience-title">Project Lead</div>
+                <div class="experience-company">smartQED | April 2023 - December 2023</div>
+                <ul>
+                    <li>Led a team in integrating an OpenAI GPT model into the company's core product, significantly enhancing its functionality and user engagement.</li>
+                    <li>Employed React JS, Flask, Python, and various APIs to implement effective solutions.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="experience-title">AI/ML Software Engineer Intern</div>
+                <div class="experience-company">smartQED | July 2022 – April 2023</div>
+                <ul>
+                    <li>Developed a summarization system for Stack Overflow data using a pre-trained transformer model.</li>
+                    <li>Implemented a customer data analysis dashboard using Java, MySQL, and Python.</li>
+                    <li>Created a custom Named Entity Recognition (NER) model for precise data classification and summarization.</li>
+                    <li>Applied Object-Oriented Programming (OOP) principles to enhance code quality and maintainability.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="experience-title">Software Engineer + Data Analyst Intern</div>
+                <div class="experience-company">University Of California, San Francisco | June 2022 – August 2022</div>
+                <ul>
+                    <li>Developed a Python application to optimize yearly carbon emissions computations, analyzing survey data from over 6,600 staff and students.</li>
+                    <li>Utilized the Distance Matrix API and data visualization techniques to create an effective algorithm and present results.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="experience-title">AI Researcher</div>
+                <div class="experience-company">San Jose State University | June 2023 – August 2023</div>
+                <ul>
+                    <li>Researched the intersection of steganography and machine learning, utilizing TensorFlow to build a project that evaluated a neural network's data-hiding capabilities while achieving 90% accuracy.</li>
+                </ul>
             </div>
         </div>
 
@@ -210,20 +264,24 @@
             <h3 class="section-title glow">FEATURED PROJECTS</h3>
             <div class="projects">
                 <div class="project">
-                    <h3>AI-Powered Recommendation Engine</h3>
-                    <p>Developed a sophisticated recommendation system using deep learning techniques, improving user engagement by 35% for a major e-commerce platform.</p>
-                    <a href="https://github.com/yourusername/project1" class="project-link">View Project</a>
+                    <h3>GITA-GPT</h3>
+                    <p>Developed an innovative AI-based question-answering system that leverages Retrieval-Augmented Generation (RAG) architecture and Meta's LLAMA LLM via the GROQ API for real-time inference on the teachings of the Bhagavad Gita. Integrated FAISS to ensure efficient vector search capabilities, enabling rapid and precise information retrieval.</p>
+                    <a href="https://github.com/yashthapliyal/GITA-GPT" class="project-link">View Project</a>
                 </div>
-                <div class="project">
-                    <h3>Blockchain-based Supply Chain Solution</h3>
-                    <p>Created a decentralized application for supply chain management, enhancing transparency and reducing fraud by 60% for participating companies.</p>
-                    <a href="https://github.com/yourusername/project2" class="project-link">View Project</a>
-                </div>
-                <div class="project">
-                    <h3>Real-time Data Visualization Dashboard</h3>
-                    <p>Engineered a scalable, real-time dashboard using React and D3.js, processing over 1 million data points per second with minimal latency.</p>
-                    <a href="https://github.com/yourusername/project3" class="project-link">View Project</a>
-                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title glow">SKILLS</h3>
+            <div class="skills">
+                <span class="skill">Python</span>
+                <span class="skill">Machine Learning</span>
+                <span class="skill">Deep Learning</span>
+                <span class="skill">Data Analysis</span>
+                <span class="skill">Object-Oriented Programming (OOP)</span>
+                <span class="skill">Team Leadership</span>
+                <span class="skill">SQL</span>
+                <span class="skill">Java</span>
             </div>
         </div>
 
@@ -233,7 +291,7 @@
     </div>
 
     <script>
-        const name = "YOUR NAME";
+        const name = "Yash Thapliyal";
         const titles = ["Software Engineer", "Leader", "AI Enthusiast"];
         let nameIndex = 0;
         let titleIndex = 0;
