@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html><head><base href="https://websimengine.com/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yash Thapliyal</title>
@@ -24,6 +22,7 @@
         text-align: center;
         margin-bottom: 10px;
         font-weight: 600;
+        min-height: 60px;
     }
     h2 {
         font-size: 1.2em;
@@ -31,7 +30,7 @@
         color: #999;
         margin-top: 0;
         font-weight: 300;
-        min-height: 24px;
+        min-height: 24px; /* Ensures consistent height during typing */
     }
     .section {
         margin-bottom: 50px;
@@ -83,8 +82,8 @@
         margin-right: 8px;
     }
     .projects {
-        display: flex;
-        flex-direction: column; /* Stack projects vertically */
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 25px;
     }
     .project {
@@ -128,24 +127,45 @@
     .glow {
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 255, 255, 0.5);
     }
-    .headshot-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
+    .experience {
+        margin-bottom: 30px;
     }
-    .headshot {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 4px solid #4a4a4a;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease;
+    .experience-item {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #444;
     }
-    .headshot:hover {
-        transform: scale(1.05);
+    .experience-item:last-child {
+        border-bottom: none;
     }
-        .skills {
+    .experience-title {
+        font-weight: 600;
+        color: #f0f0f0;
+        margin-bottom: 5px;
+    }
+    .experience-company {
+        color: #bbb;
+        font-size: 0.9em;
+        margin-bottom: 10px;
+    }
+    .highlight {
+        color: #4da6ff;
+        font-weight: 600;
+    }
+    .cursor {
+        display: inline-block;
+        width: 3px;
+        height: 20px;
+        background-color: #fff;
+        margin-left: 5px;
+        animation: blink 0.7s infinite;
+    }
+    @keyframes blink {
+        0% { opacity: 0; }
+        50% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+    .skills {
         display: flex;
         flex-wrap: wrap;
         gap: 15px;
@@ -165,6 +185,27 @@
         box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
         background: linear-gradient(145deg, #444, #555);
     }
+    ul {
+        padding-left: 20px;
+    }
+    .headshot-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+    .headshot {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #4a4a4a;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+    }
+    .headshot:hover {
+        transform: scale(1.05);
+    }
+
 </style>
 </head>
 <body>
@@ -175,7 +216,6 @@
         </div>
     
         <h1 id="name" class="glow"></h1>
-        
         <h2 id="typewriter"></h2>
         
         <div class="section">
@@ -200,6 +240,14 @@
 
 <div class="section experience">
     <h3 class="section-title glow">EXPERIENCE</h3>
+    <div class="experience-item">
+        <div class="experience-title">ML Research Intern</div>
+        <div class="experience-company">UC Berkeley Sky Compute Lab | December 2024 – Present</div>
+        <ul>
+            <li>Researching novel methods for optimizing LLM inference by implementing on-demand query (Q) computations to improve efficiency and scalability.</li>
+            <li>Evaluating performance improvements in KVQ systems, focusing on enhancing dynamic computation workflows and reducing bottlenecks.</li>
+        </ul>
+    </div>
     <div class="experience-item">
         <div class="experience-title">ML Engineer Intern</div>
         <div class="experience-company">Stanford University | Nov 2023 – Present</div>
@@ -252,21 +300,22 @@
 </div>
 
 
-        <div class="section">
-            <h3 class="section-title glow">FEATURED PROJECTS</h3>
-            <div class="projects">
-                <div class="project">
-                    <h3>GITA-GPT</h3>
-                    <p>Developed an innovative AI-based question-answering system that leverages Retrieval-Augmented Generation (RAG) architecture and Meta's LLAMA LLM via the GROQ API for real-time inference on the teachings of the Bhagavad Gita. Integrated FAISS to ensure efficient vector search capabilities, enabling rapid and precise information retrieval.</p>
-                    <a href="https://github.com/YashDThapliyal/GITA-GPT" class="project-link">View Project</a>
-                </div>
-                <div class="project">
-                    <h3>meetGPT</h3>
-                    <p>An award-winning AI-powered meeting assistant that streamlines workflows with features like meeting transcript summarization, AI-driven chat, name tracking, and automated email generation. Built with Streamlit and GPT-3.5-turbo, it won 2nd place at the Cisco CCE BridgeHacks Hackathon.</p>
-                    <a href="https://github.com/YashDThapliyal/meetGPT-team14" class="project-link">View Project</a>
-                </div>
-            </div>
+<div class="section">
+    <h3 class="section-title glow">FEATURED PROJECTS</h3>
+    <div class="projects">
+        <div class="project">
+            <h3>GITA-GPT</h3>
+            <p>Developed an innovative AI-based question-answering system that leverages Retrieval-Augmented Generation (RAG) architecture and Meta's LLAMA LLM via the GROQ API for real-time inference on the teachings of the Bhagavad Gita. Integrated FAISS to ensure efficient vector search capabilities, enabling rapid and precise information retrieval.</p>
+            <a href="https://github.com/YashDThapliyal/GITA-GPT" class="project-link">View Project</a>
         </div>
+        <div class="project">
+            <h3>meetGPT</h3>
+            <p>An award-winning AI-powered meeting assistant that streamlines workflows with features like meeting transcript summarization, AI-driven chat, name tracking, and automated email generation. Built with Streamlit and GPT-3.5-turbo, it won 2nd place at the Cisco CCE BridgeHacks Hackathon.</p>
+            <a href="https://github.com/YashDThapliyal/meetGPT-team14" class="project-link">View Project</a>
+        </div>
+    </div>
+</div>
+
 
         <div class="section">
             <h3 class="section-title glow">SKILLS</h3>
